@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bienestar Estudiantil</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-content">
+      <h1>Bienestar Estudiantil</h1>
+      <p>
+        Dashboard interactivo para consultar servicios de apoyo y registrar
+        solicitudes de atención estudiantil.
+      </p>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="summary-section">
+      <article class="summary-card">
+        <h2>Total de servicios</h2>
+        <p id="totalServices">0</p>
+      </article>
+
+      <article class="summary-card">
+        <h2>Servicios disponibles</h2>
+        <p id="availableServices">0</p>
+      </article>
+
+      <article class="summary-card">
+        <h2>Solicitudes registradas</h2>
+        <p id="totalRequests">0</p>
+      </article>
+    </section>
+
+    <section class="controls-section">
+      <div class="search-box">
+        <label for="searchInput">Buscar servicio</label>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Ejemplo: psicología, becas, deporte..."
+        />
+      </div>
+
+      <div class="filter-box">
+        <label for="categoryFilter">Filtrar por categoría</label>
+        <select id="categoryFilter">
+          <option value="all">Todas las categorías</option>
+          <option value="Salud mental">Salud mental</option>
+          <option value="Rendimiento académico">Rendimiento académico</option>
+          <option value="Orientación estudiantil">Orientación estudiantil</option>
+          <option value="Salud física">Salud física</option>
+          <option value="Recreación y deporte">Recreación y deporte</option>
+          <option value="Inclusión y acompañamiento">Inclusión y acompañamiento</option>
+          <option value="Apoyo económico">Apoyo económico</option>
+        </select>
+      </div>
+
+      <div class="filter-box">
+        <label for="priorityFilter">Filtrar por prioridad</label>
+        <select id="priorityFilter">
+          <option value="all">Todas las prioridades</option>
+          <option value="Alta">Alta</option>
+          <option value="Media">Media</option>
+          <option value="Baja">Baja</option>
+        </select>
+      </div>
+
+      <div class="filter-box">
+        <label for="sortSelect">Ordenar por</label>
+        <select id="sortSelect">
+          <option value="default">Orden original</option>
+          <option value="name">Nombre del servicio</option>
+          <option value="priority">Prioridad</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <section class="services-section">
+        <div class="section-title">
+          <h2>Servicios de bienestar</h2>
+          <p>Consulta los servicios disponibles para la comunidad estudiantil.</p>
+        </div>
+
+        <div id="servicesList" class="services-list">
+          <!-- Las tarjetas de servicios se cargarán dinámicamente con JavaScript -->
+        </div>
+      </section>
+
+      <aside class="detail-section">
+        <div class="section-title">
+          <h2>Detalle del servicio</h2>
+          <p>Selecciona un servicio para ver más información.</p>
+        </div>
+
+        <div id="serviceDetail" class="detail-card">
+          <p class="empty-message">
+            Aún no has seleccionado ningún servicio.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="request-section">
+      <div class="section-title">
+        <h2>Registrar solicitud de atención</h2>
+        <p>
+          Completa el formulario para simular una solicitud dirigida al área de
+          bienestar estudiantil.
+        </p>
+      </div>
+
+      <form id="requestForm" class="request-form">
+        <div class="form-group">
+          <label for="studentName">Nombre del estudiante</label>
+          <input
+            type="text"
+            id="studentName"
+            placeholder="Ingrese su nombre completo"
+          />
+          <span class="error-message" id="studentNameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="studentEmail">Correo institucional</label>
+          <input
+            type="email"
+            id="studentEmail"
+            placeholder="ejemplo@institucion.edu.ec"
+          />
+          <span class="error-message" id="studentEmailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="serviceSelect">Servicio solicitado</label>
+          <select id="serviceSelect">
+            <option value="">Seleccione un servicio</option>
+          </select>
+          <span class="error-message" id="serviceSelectError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="requestReason">Motivo de la solicitud</label>
+          <textarea
+            id="requestReason"
+            rows="4"
+            placeholder="Describa brevemente el motivo de su solicitud"
+          ></textarea>
+          <span class="error-message" id="requestReasonError"></span>
+        </div>
+
+        <button type="submit" class="submit-button">
+          Registrar solicitud
+        </button>
+      </form>
+
+      <div id="formMessage" class="form-message"></div>
+    </section>
+
+    <section class="requests-list-section">
+      <div class="section-title">
+        <h2>Solicitudes registradas</h2>
+        <p>Listado de solicitudes guardadas localmente en el navegador.</p>
+      </div>
+
+      <div id="requestsList" class="requests-list">
+        <!-- Las solicitudes registradas se mostrarán con JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>
+      Proyecto académico - Módulo de Bienestar Estudiantil | JavaScript ES6
+    </p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

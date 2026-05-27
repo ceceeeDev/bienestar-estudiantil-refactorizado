@@ -1,0 +1,547 @@
+/* ==============================
+   Estilos generales
+   Proyecto: Bienestar Estudiantil
+   ============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --navy: #0b1437;
+  --navy-mid: #16224a;
+  --teal: #0fd4b0;
+  --accent: #4f8ef7;
+  --accent-dim: #3a74df;
+  --surface: #ffffff;
+  --surface2: #f4f7fe;
+  --surface3: #e9eeff;
+  --text-primary: #0b1437;
+  --text-secondary: #5a6689;
+  --text-muted: #8b97be;
+  --border: rgba(79, 142, 247, 0.15);
+  --red: #f25c5c;
+  --green: #0fa86e;
+  --shadow-sm: 0 2px 12px rgba(11, 20, 55, 0.06);
+  --shadow-md: 0 8px 32px rgba(11, 20, 55, 0.1);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--surface2);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ==============================
+   Encabezado
+   ============================== */
+
+.main-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a2f6e 100%);
+  color: #ffffff;
+  padding: 52px 20px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-header::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(15, 212, 176, 0.15) 0%, transparent 70%);
+  top: -180px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.main-header::after {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 142, 247, 0.12) 0%, transparent 70%);
+  bottom: -120px;
+  left: 5%;
+  pointer-events: none;
+}
+
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.main-header h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.main-header p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ==============================
+   Contenedor principal
+   ============================== */
+
+.dashboard-container {
+  max-width: 1240px;
+  margin: 32px auto;
+  padding: 0 24px;
+}
+
+/* ==============================
+   Tarjetas de resumen
+   ============================== */
+
+.summary-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.summary-card {
+  background-color: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.summary-card h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.summary-card p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+/* ==============================
+   Controles de búsqueda y filtros
+   ============================== */
+
+.controls-section {
+  background-color: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: end;
+}
+
+.search-box,
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  background: var(--surface2);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  appearance: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.12);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ==============================
+   Distribución de contenido
+   ============================== */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 22px;
+  margin-bottom: 26px;
+}
+
+.services-section,
+.detail-section,
+.request-section,
+.requests-list-section {
+  background-color: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+}
+
+.section-title p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ==============================
+   Listado de servicios
+   ============================== */
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.service-card {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  background-color: var(--surface2);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(79, 142, 247, 0.12);
+  border-color: var(--accent);
+}
+
+.service-card h3 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+
+.service-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background-color: var(--surface3);
+  color: var(--accent-dim);
+}
+
+.badge-priority-high {
+  background-color: #fde8e8;
+  color: #c0392b;
+}
+
+.badge-priority-medium {
+  background-color: #fff3d6;
+  color: #9b6300;
+}
+
+.badge-priority-low {
+  background-color: #e3faef;
+  color: #0a7c4c;
+}
+
+.card-button {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.card-button:hover {
+  background-color: var(--accent-dim);
+  transform: translateY(-1px);
+}
+
+/* ==============================
+   Detalle del servicio
+   ============================== */
+
+.detail-card {
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background-color: var(--surface2);
+  min-height: 250px;
+}
+
+.detail-card h3 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.detail-card p {
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.empty-message {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.88rem;
+}
+
+/* ==============================
+   Formulario de solicitud
+   ============================== */
+
+.request-section {
+  margin-bottom: 26px;
+}
+
+.request-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group:nth-child(4) {
+  grid-column: span 2;
+}
+
+.error-message {
+  min-height: 18px;
+  color: var(--red);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.submit-button {
+  grid-column: span 2;
+  padding: 14px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--teal) 0%, #0aaa8e 100%);
+  color: var(--navy);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: all var(--transition);
+}
+
+.submit-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(15, 212, 176, 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.form-message {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.form-message.success {
+  color: var(--green);
+  background: #edfaf5;
+  border: 1px solid rgba(10, 168, 110, 0.2);
+}
+
+.form-message.error {
+  color: var(--red);
+  background: #fff0f0;
+  border: 1px solid rgba(242, 92, 92, 0.2);
+}
+
+/* ==============================
+   Listado de solicitudes
+   ============================== */
+
+.requests-list {
+  display: grid;
+  gap: 12px;
+}
+
+.request-card {
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  background-color: var(--surface2);
+  transition: box-shadow var(--transition);
+}
+
+.request-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.request-card h3 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 0.97rem;
+}
+
+.request-card p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+/* ==============================
+   Pie de página
+   ============================== */
+
+.main-footer {
+  text-align: center;
+  padding: 24px;
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  margin-top: 40px;
+  font-size: 0.85rem;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+
+@media (max-width: 950px) {
+  .summary-section,
+  .controls-section,
+  .content-grid,
+  .request-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group:nth-child(4),
+  .submit-button {
+    grid-column: span 1;
+  }
+
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-header {
+    padding: 36px 16px 32px;
+  }
+
+  .main-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .dashboard-container {
+    padding: 0 16px;
+  }
+
+  .summary-card,
+  .services-section,
+  .detail-section,
+  .request-section,
+  .requests-list-section,
+  .controls-section {
+    padding: 18px;
+  }
+}
