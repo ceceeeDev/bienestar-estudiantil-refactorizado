@@ -1,69 +1,107 @@
 // ==============================
 // Servicio de lógica del módulo
 // Proyecto: Bienestar Estudiantil
+// Archivo: js/services/module-service.js
 // ==============================
 
-// Cuenta cuántos servicios están disponibles
+// Contar servicios disponibles
 export const getAvailableServicesCount = (services) => {
-  return services.filter((service) => {
+
+  return services.filter(service => {
     return service.availability === "Disponible";
   }).length;
 };
 
-// Busca un servicio específico por su ID
+// Buscar servicio por ID
 export const findServiceById = (services, serviceId) => {
-  return services.find((service) => {
+
+  return services.find(service => {
     return service.id === serviceId;
   });
 };
 
-// Filtra los servicios por texto, categoría y prioridad
+// Filtrar servicios
 export const filterServices = (services, filters) => {
-  const { searchText, category, priority } = filters;
 
-  const normalizedSearchText = searchText.toLowerCase().trim();
+  const {
+    searchText,
+    category,
+    priority
+  } = filters;
 
-  return services.filter((service) => {
-    const serviceName = service.name.toLowerCase();
-    const serviceCategory = service.category.toLowerCase();
-    const serviceDescription = service.description.toLowerCase();
+  const normalizedSearch =
+    searchText.toLowerCase().trim();
+
+  return services.filter(service => {
 
     const matchesSearch =
-      serviceName.includes(normalizedSearchText) ||
-      serviceCategory.includes(normalizedSearchText) ||
-      serviceDescription.includes(normalizedSearchText);
+
+      service.name
+        .toLowerCase()
+        .includes(normalizedSearch)
+
+      ||
+
+      service.description
+        .toLowerCase()
+        .includes(normalizedSearch)
+
+      ||
+
+      service.category
+        .toLowerCase()
+        .includes(normalizedSearch);
 
     const matchesCategory =
-      category === "all" || service.category === category;
+
+      category === "all"
+      ||
+      service.category === category;
 
     const matchesPriority =
-      priority === "all" || service.priority === priority;
 
-    return matchesSearch && matchesCategory && matchesPriority;
+      priority === "all"
+      ||
+      service.priority === priority;
+
+    return (
+      matchesSearch
+      &&
+      matchesCategory
+      &&
+      matchesPriority
+    );
   });
 };
 
-// Ordena los servicios según el criterio seleccionado
+// Ordenar servicios
 export const sortServices = (services, sortType) => {
-  const servicesCopy = [...services];
+
+  const sortedServices = [...services];
 
   if (sortType === "name") {
-    servicesCopy.sort((a, b) => {
+
+    sortedServices.sort((a, b) => {
       return a.name.localeCompare(b.name);
     });
   }
 
   if (sortType === "priority") {
+
     const priorityOrder = {
       Alta: 1,
       Media: 2,
-      Baja: 3,
+      Baja: 3
     };
 
-    servicesCopy.sort((a, b) => {
-      return priorityOrder[a.priority] - priorityOrder[b.priority];
+    sortedServices.sort((a, b) => {
+      return (
+        priorityOrder[a.priority]
+        -
+        priorityOrder[b.priority]
+      );
     });
   }
 
-  return servicesCopy;
+  return sortedServices;
 };
